@@ -37,7 +37,7 @@ const Home: NextPage = () => {
             </div>
             <div className="hidden md:flex items-center space-x-3 ">
               {!session?
-              <a href="" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" onClick={ signIn}>Log In</a>:
+              <a href="" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300" onClick={()=> signIn()}>Log In</a>:
               <a href="" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>}
             </div>
             <div className="md:hidden flex items-center">
