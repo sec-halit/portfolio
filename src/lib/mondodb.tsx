@@ -1,15 +1,23 @@
-import { MongoClient, MongoClientOptions } from "mongodb"
-import { Promise } from "mongoose"
+import { MongoClient, MongoClientOptions,ServerApiVersion } from "mongodb"
 
-const uri = String(process.env.MONGODB_URI)
-
-
-let client
+const uri:string = process.env.MONGODB_URI || ""
+const options:any  = {
+  useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1
+}
+let client:MongoClient,clientPromise:Promise<MongoClient>;
 
 if (!process.env.MONGODB_URI) {
   throw new Error("Please add your Mongo URI to .env.local")
 }
 
-
-client = new MongoClient(uri)
-export default client.connect()
+if (process.env.NODE_ENV === "development") {
+  if (!global._mongoClientPromise) {
+    client = new MongoClient(uri, options)
+    global._mongoClientPromise = client.connect()
+  }
+  clientPromise = global._mongoClientPromise
+} else {
+   client = new MongoClient(uri, options)
+   clientPromise = client.connect()
+}
+export default clientPromise

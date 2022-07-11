@@ -20,7 +20,8 @@
       "@/page-components/*": ["page-components/*"],
       "@/lib/*": ["lib/*"],
       "@/api-lib/*": ["api-lib/*"],
-      "@/styles/*": ["assets/styles/*"]
+      "@/styles/*": ["assets/styles/*"],
+      "@images/*":["public/images/*"]
     },
   },
  
