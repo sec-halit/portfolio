@@ -23,7 +23,6 @@ interface IHeaderProps {
 export default function Header({ href }: IHeaderProps) {
     const router = useRouter();
     const { data: session, status } = useSession();
-    console.log(session)
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
