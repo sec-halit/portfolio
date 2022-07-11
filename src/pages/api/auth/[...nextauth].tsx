@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth  from 'next-auth';
 
 
 import GoogleProvider from "next-auth/providers/google";
@@ -12,7 +12,7 @@ import { NextAuthOptions } from "next-auth/core/types";
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 
-export const authOptions: NextAuthOptions = {
+export default NextAuth({
   // https://next-auth.js.org/configuration/providers/oauth
   adapter: MongoDBAdapter(clientPromise),
   providers: [
@@ -76,6 +76,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
-};
+})
 
-export default NextAuth(authOptions);
+// export default NextAuth(authOptions);
