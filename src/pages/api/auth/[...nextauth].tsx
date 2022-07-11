@@ -1,9 +1,12 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
+
+
 import GoogleProvider from "next-auth/providers/google";
 // import AppleProvider from "next-auth/providers/apple"
 import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mondodb";
+import { NextAuthOptions } from "next-auth/core/types";
 // import jwt from "jsonwebtoken";
 
 // For more information on each option (and a full list of options) go to
