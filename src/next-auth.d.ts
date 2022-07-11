@@ -1,5 +1,5 @@
 // import "next-auth/jwt";
-// import NextAuth from "next-auth";
+import NextAuth from "next-auth";
 // // Read more at: https://next-auth.js.org/getting-started/typescript#module-augmentation
 
 // declare module "next-auth/jwt" {
@@ -12,7 +12,7 @@
 //   }
 // }
 
-// declare module "next-auth" {
+declare module "next-auth" {
 //   /**
 //    * Returned by `useSession`, `getSession` and received as a prop on the `Provider` React Context
 //    */
@@ -29,4 +29,4 @@
 //   interface Account {}
 //   /** The OAuth profile returned from your provider */
 //   interface Profile {}
-// }
+}
