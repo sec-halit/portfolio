@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./src/*.{js,ts,jsx,tsx}",
@@ -6,12 +9,19 @@ module.exports = {
     "./src/lib/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/page-components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     container: {
       center: true,
     },
-    extend:{}
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    "@tailwindcss/forms","@tailwindcss/typography","@tailwindcss/aspect-ratio"
+  ],
 }
