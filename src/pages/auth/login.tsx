@@ -4,6 +4,7 @@ import SignInEmail from '@/page-components/auth/signInEmail'
 import { ClientSafeProvider, getCsrfToken, getProviders, LiteralUnion, signIn } from 'next-auth/react';
 import { BuiltInProviderType } from 'next-auth/providers';
 import { CtxOrReq } from 'next-auth/client/_utils';
+import SignInWithProvider from '@/page-components/auth/signInWithProvider';
 type Props = {
   csrfToken?: string,
   providers?: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null
@@ -17,7 +18,7 @@ const Login: FC<Props> = ({
         <Layout>
           <SignInEmail csrfToken={csrfToken} provider={providers?.credentials} />
           {providers && Object.values(providers).map((provider,key) => provider.name!=="Credentials" &&(
-            <SignIn csrfToken={csrfToken} provider={provider} key={key}/>
+            <SignInWithProvider csrfToken={csrfToken} provider={provider} key={key}/>
           ))}
         </Layout>
       </>

@@ -15,15 +15,13 @@
   ```
 */
 import { LockClosedIcon } from '@heroicons/react/solid'
-import Image from 'next/image'
-import Logo from '@images/workflow-mark-indigo-600.svg';
 import React, { FC, ReactElement } from 'react';
 import { ClientSafeProvider, signIn } from 'next-auth/react'
 type Props = {
     csrfToken?: string | undefined
     provider?: ClientSafeProvider | undefined
 }
-const SignIn: FC<Props> = ({
+const SignInWithProvider: FC<Props> = ({
     csrfToken,
     provider
 }): ReactElement => {
@@ -99,4 +97,4 @@ const SignIn: FC<Props> = ({
 }
 
 
-export default SignIn
+export default SignInWithProvider
