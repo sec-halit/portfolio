@@ -1,17 +1,21 @@
-import NextAuth  from 'next-auth';
+import NextAuth from 'next-auth';
 
+import CredentialsProvider from "next-auth/providers/credentials";
 
 import GoogleProvider from "next-auth/providers/google";
 // import AppleProvider from "next-auth/providers/apple"
 import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mondodb";
-import { NextAuthOptions } from "next-auth/core/types";
+import connectDB from '@/lib/index';
+import Users, { IUser, User } from '@/lib/models/userModels';
+import bcrypt from 'bcrypt';
+interface ISignInUser {
+  password: string;
+  user: IUser;
+}
 // import jwt from "jsonwebtoken";
-
-// For more information on each option (and a full list of options) go to
-// https://next-auth.js.org/configuration/options
-
+connectDB();
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers/oauth
   adapter: MongoDBAdapter(clientPromise),
@@ -23,39 +27,38 @@ export default NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-    }), 
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "email", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials, req) {
+        const email = credentials?.email || "";
+        const password = credentials?.password || "";
+        const user = await Users.findOne<IUser>({ email });
+        if (!user) {
+          throw new Error("You haven't registered yet");
+        }
+        if (password && password.trim()!=="" || !password) {
+          throw new Error("password must not be empty");
+        }
+        return signInUser({ password, user })
+      }
+    })
   ],
   theme: {
     colorScheme: "dark",
   },
-  // jwt: {
-  //   async encode({ secret, token }) {
-  //     return jwt.sign(token, secret);
-  //   },
-  //   async decode({ secret, token }) {
-  //     return  jwt.verify(token, secret);
-  //   },
-  // },
   session: {
-    // Choose how you want to save the user session.
-    // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.
-    // If you use an `adapter` however, we default it to `"database"` instead.
-    // You can still force a JWT session by explicitly defining `"jwt"`.
-    // When using `"database"`, the session cookie will only contain a `sessionToken` value,
-    // which is used to look up the session in the database.
     strategy: "database",
-
-    // Seconds - How long until an idle session expires and is no longer valid.
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-
-    // Seconds - Throttle how frequently to write to database to extend a session.
-    // Use it to limit write operations. Set to 0 to always update the database.
-    // Note: This option is ignored if using JSON Web Tokens
+    maxAge: 2 * 24 * 60 * 60, // 2 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
-  cookies:{
+  cookies: {
     sessionToken: {
-      name:"auth",
+      name: "auth",
       options: {
         httpOnly: true,
         sameSite: 'lax',
@@ -74,6 +77,20 @@ export default NextAuth({
       return token;
     },
   },
+  pages:{
+    signIn:"/auth/login"
+  }
 })
 
-// export default NextAuth(authOptions);
+
+const signInUser = async ({ password, user }:ISignInUser) => {
+  if (!user.password) {
+    throw new Error("Please enter password");
+  }
+  const hash = await bcrypt.hash(user.password, process.env.NEXTAUTH_SECRET);
+  const isMatch = await bcrypt.compare(password, hash);
+  if (!isMatch) {
+    throw new Error("Password not correct");
+  }
+  return user;
+}

@@ -2,15 +2,15 @@ import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
 
 import { SessionProvider } from "next-auth/react"
-
-export default function App({ Component, pageProps }: AppProps) {
+import { FC } from 'react';
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <SessionProvider session={pageProps.session} refetchInterval={0}>
       <Component {...pageProps} />
     </SessionProvider>
   )
 }
-
+export default App
 
 // function MyApp({ Component, pageProps:{
 //   session,
