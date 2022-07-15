@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import type { DefaultUser,User as OAuthUser } from "next-auth/core/types";
+import type { User as OAuthUser } from "next-auth/core/types";
 import validator from "validator"
 
 // interface IUserModel{
@@ -17,9 +17,9 @@ import validator from "validator"
 export interface IUser extends OAuthUser {
     password: string
     resetToken: string
-    update: string
-    validEmail: string
-    emailToken: string
+    validEmail?: string
+    emailToken?: string
+    update?: string
 }
 export class User {
     password: string | undefined;
@@ -28,8 +28,11 @@ export class User {
     email?: string | null | undefined;
     image?: string | null | undefined;
     resetToken?: string | null | undefined;
+    validEmail?: string | null | undefined;
+    emailToken?: string | null | undefined;
+    update?: string | null | undefined;
 }
-const userSchema = new mongoose.Schema<IUser>({
+const userSchema = new mongoose.Schema<User>({
     name: {
         type: String,
         default: "guest"
@@ -41,7 +44,8 @@ const userSchema = new mongoose.Schema<IUser>({
         validate: [validator.isEmail, "Please enter valid email address"],
     },
     password: {
-        type: String
+        type: String,
+        required: true,
     },
     image: {
         type: String,
@@ -54,4 +58,4 @@ const userSchema = new mongoose.Schema<IUser>({
 },
     { timestamps: true }
 );
-export default mongoose.models.users || mongoose.model<IUser>('users', userSchema);
+export default mongoose.models.users || mongoose.model('users', userSchema);

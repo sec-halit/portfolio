@@ -7,5 +7,7 @@ declare namespace NodeJS {
     EMAIL_FROM:string
     EMAIL_SERVER:string
     MONGODB_URI:string
+    NEXT_AUTH_CREDENTIAL_URL:string
+    JWT_SECRET:string
   }
 }

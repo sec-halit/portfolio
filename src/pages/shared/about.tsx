@@ -1,9 +1,9 @@
 import React, { FC,ReactElement  } from 'react'
 import Layout from '@/page-components/layout/index'
 import Cvs  from '@/lib/models/cvModels'
-import connectDB from '../lib';
+import connectDB from '@/lib/index';
 type Props = {  };
-const Home: FC<Props>=():ReactElement => {
+const About: FC<Props>=({}):ReactElement => {
   return (<Layout>
     <div className="container mx-auto p-2">
       <a href="#" className="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -16,12 +16,12 @@ const Home: FC<Props>=():ReactElement => {
 }
 
 
-export default Home
+export default About
 
 export const getServerSideProps = async ()=>{
-  // await connectDB();
-  // const Items =await Cvs.findOne().sort('-_id');
-  // console.log("Items",Items)
+  await connectDB();
+  const Items =await Cvs.findOne().sort('-_id');
+  console.log("Items",Items)
   return {
     props:{
       

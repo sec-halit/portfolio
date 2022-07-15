@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 /* This example requires Tailwind CSS v2.0+ */
 import React, { FC, Fragment } from 'react'
@@ -7,11 +8,13 @@ import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/react'
 import Logo from '@/page-components/layout/logo';
 import { Session } from 'next-auth/core/types'
+import Link from 'next/link'
+import Head from 'next/head'
 const navigation = [
     { name: 'Dashboard', href: '/' },
     { name: 'Team', href: '/auth/login' },
     { name: 'Projects', href: '#' },
-    { name: 'Calendar', href: '#' },
+    { name: 'About', href: '/about' },
 ]
 
 function classNames(...classes: string[]) {
@@ -23,12 +26,17 @@ interface IHeaderProps {
     session?: Session,
     status?: string
 }
-const Header:FC<IHeaderProps> = ({ href }) => {
+const Header: FC<IHeaderProps> = ({ }) => {
     const router = useRouter();
-    const { data: session , status } =useSession();
+    const { data: session, status } = useSession();
+    console.log(session)
     const { image, name, email } = session && session.user || {}
     return (
         <>
+            <Head>
+                <title>I using and testing to tools</title>
+                <meta name="description" content="I testing on Nextjs,Redux,next-auth " />
+            </Head>
             <Disclosure as="nav" className="bg-gray-800">
                 {({ open }) => (
                     <>
@@ -143,14 +151,7 @@ const Header:FC<IHeaderProps> = ({ href }) => {
                                                     </>
                                                     : <>
                                                         <Menu.Item>
-                                                            {({ active }) => (
-                                                                <a
-                                                                    href="/auth/login"
-                                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm font-medium')}
-                                                                >
-                                                                    Sign In
-                                                                </a>
-                                                            )}
+                                                            {({ active }) => (<a href="/auth/login" className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm font-medium')}>Sign In</a>)}
                                                         </Menu.Item>
                                                         <Menu.Item>
                                                             {({ active }) => (

@@ -9,13 +9,11 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mondodb";
 import connectDB from '@/lib/index';
 import Users, { IUser, User } from '@/lib/models/userModels';
-import bcrypt from 'bcrypt';
-interface ISignInUser {
-  password: string;
-  user: IUser;
-}
-// import jwt from "jsonwebtoken";
-connectDB();
+
+import  { SignInUser } from '@/lib/services/index'
+
+
+(async ()=>await connectDB())()
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers/oauth
   adapter: MongoDBAdapter(clientPromise),
@@ -31,28 +29,29 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "email", type: "text", placeholder: "jsmith" },
+        email: { label: "email", type: "text", placeholder: "" },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
         const email = credentials?.email || "";
         const password = credentials?.password || "";
-        const user = await Users.findOne<IUser>({ email });
+        const user = await Users.findOne({ email:email });
         if (!user) {
           throw new Error("You haven't registered yet");
         }
-        if (password && password.trim()!=="" || !password) {
+        if (!password) {
           throw new Error("password must not be empty");
         }
-        return signInUser({ password, user })
-      }
+        return SignInUser({ password, user })
+      },
+      
     })
   ],
   theme: {
     colorScheme: "dark",
   },
   session: {
-    strategy: "database",
+    strategy: "jwt",
     maxAge: 2 * 24 * 60 * 60, // 2 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
@@ -63,34 +62,33 @@ export default NextAuth({
         httpOnly: true,
         sameSite: 'lax',
         path: '/',
-        secure: true
-      }
+        secure: false
+      },
+      
     }
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, token, user }) {
-      return session || {};
+    async signIn({ user, account, profile, email, credentials }) {
+      const isAllowedToSignIn = true
+      if (isAllowedToSignIn) {
+        return true
+      } else {
+        return false
+        // return '/unauthorized'
+      }
     },
-    async jwt(token) {
-      token.token["userRole"] = "admin";
+    async session({ session, user, token }) {
+      return session;
+    },
+    async jwt({ token, user, account, profile, isNewUser}) {
       return token;
     },
   },
-  pages:{
-    signIn:"/auth/login"
-  }
+   pages:{
+    // newUser:"/auth/register"
+    //  signIn:"/auth/login"
+   },
+
 })
 
-
-const signInUser = async ({ password, user }:ISignInUser) => {
-  if (!user.password) {
-    throw new Error("Please enter password");
-  }
-  const hash = await bcrypt.hash(user.password, process.env.NEXTAUTH_SECRET);
-  const isMatch = await bcrypt.compare(password, hash);
-  if (!isMatch) {
-    throw new Error("Password not correct");
-  }
-  return user;
-}
