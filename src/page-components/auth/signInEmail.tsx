@@ -17,22 +17,29 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 import Logo from '@images/workflow-mark-indigo-600.svg';
-import React from 'react';
-
-export default function SignIn() {
+import React, { FC, ReactElement } from 'react';
+import { ClientSafeProvider, getCsrfToken, getProviders, LiteralUnion, signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router';
+type Props = {
+  csrfToken?: string | undefined
+  provider?: ClientSafeProvider | undefined,
+}
+const SignInEmail: FC<Props> = ({
+  csrfToken,
+  provider
+}): ReactElement => {
   const lazyRoot = React.useRef(null)
-
+  const OnSignIn = async (e: any) => {
+    e.preventDefault();
+    await signIn(provider?.id, {
+      redirect: true,
+      email:e.target.email.value,
+      password:e.target.password.value,
+    })
+  }
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div ref={lazyRoot}>
             <Image
@@ -45,8 +52,9 @@ export default function SignIn() {
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" onSubmit={OnSignIn}>
             <input type="hidden" name="remember" defaultValue="true" />
+            <input type="hidden" name="csrfToken" defaultValue={csrfToken} />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -112,6 +120,10 @@ export default function SignIn() {
           </form>
         </div>
       </div>
+
     </>
   )
 }
+
+
+export default SignInEmail

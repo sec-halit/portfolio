@@ -5,27 +5,24 @@ import { ClientSafeProvider, getCsrfToken, getProviders, getSession, LiteralUnio
 import { BuiltInProviderType } from 'next-auth/providers';
 import { CtxOrReq } from 'next-auth/client/_utils';
 import SignInWithProvider from '@/page-components/auth/signInWithProvider';
+import SignUp from '@/page-components/auth/signUp';
 type Props = {
   csrfToken?: string,
   providers?: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null
 };
-const Login: FC<Props> = ({
+const Register: FC<Props> = ({
   csrfToken,
   providers
 }): ReactElement => {
     return(
       <>
         <Layout>
-          
-          {providers && Object.values(providers).sort((a,b)=>a.name>b.name?0:-1).map((provider,key) =>
-           (provider.name==="Credentials"?<SignInEmail csrfToken={csrfToken} provider={provider} key={key} /> :
-            <SignInWithProvider csrfToken={csrfToken} provider={provider} key={key}/>
-          ))}
+           <SignUp csrfToken={csrfToken} provider={providers?.credentials} />
         </Layout>
       </>
     )
 }
-export default Login
+export default Register
 
 export async function getServerSideProps(context: CtxOrReq) {
   const csrfToken = await getCsrfToken(context);

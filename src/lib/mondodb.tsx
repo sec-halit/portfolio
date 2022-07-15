@@ -1,9 +1,7 @@
 import { MongoClient, MongoClientOptions,ServerApiVersion } from "mongodb"
 
 const uri:string = process.env.MONGODB_URI || ""
-const options:any  = {
-  useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1
-}
+const options:MongoClientOptions  = { serverApi: ServerApiVersion.v1}
 let client:MongoClient,clientPromise:Promise<MongoClient>;
 
 if (!process.env.MONGODB_URI) {
