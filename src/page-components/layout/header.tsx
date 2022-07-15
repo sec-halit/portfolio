@@ -29,7 +29,6 @@ interface IHeaderProps {
 const Header: FC<IHeaderProps> = ({ }) => {
     const router = useRouter();
     const { data: session, status } = useSession();
-    console.log(session)
     const { image, name, email } = session && session.user || {}
     return (
         <>

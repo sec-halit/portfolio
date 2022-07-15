@@ -19,9 +19,6 @@ const Home: FC<Props>=():ReactElement => {
 export default Home
 
 export const getServerSideProps = async ()=>{
-  // await connectDB();
-  // const Items =await Cvs.findOne().sort('-_id');
-  // console.log("Items",Items)
   return {
     props:{
       
