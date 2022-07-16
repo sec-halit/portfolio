@@ -59,7 +59,6 @@ export const RegisterUser = async (params: IUser) => {
     }
 }
 
-
 export const SignInUser = async ({ password, user }: ISignInUser) => {
     if (!password) {
         throw new Error("Please enter password");

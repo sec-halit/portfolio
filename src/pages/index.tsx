@@ -1,7 +1,6 @@
 import React, { FC,ReactElement  } from 'react'
+
 import Layout from '@/page-components/layout/index'
-import Cvs  from '@/lib/models/cvModels'
-import connectDB from '../lib';
 type Props = {  };
 const Home: FC<Props>=():ReactElement => {
   return (<Layout>
@@ -14,14 +13,4 @@ const Home: FC<Props>=():ReactElement => {
   </Layout>
   )
 }
-
-
 export default Home
-
-export const getServerSideProps = async ()=>{
-  return {
-    props:{
-      
-    }
-  }
-}

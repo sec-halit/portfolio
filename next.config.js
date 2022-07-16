@@ -11,6 +11,10 @@ const nextConfig = {
       {
         source: '/auth/login/:loginType',
         destination: '/auth/login',
+      },
+      {
+        source: '/api/cvs/getById/:id',
+        destination: '/api/cvs/getById',
       }
     ]
   },
