@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 
+
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import GoogleProvider from "next-auth/providers/google";
@@ -8,7 +9,7 @@ import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mondodb";
 import connectDB from '@/lib/index';
-import Users, { IUser, User } from '@/lib/models/userModels';
+import Users from '@/lib/models/userModels';
 
 import  { SignInUser } from '@/lib/services/index'
 
@@ -81,13 +82,12 @@ export default NextAuth({
     async session({ session, user, token }) {
       return session;
     },
-    async jwt({ token, user, account, profile, isNewUser}) {
-      return token;
+    async jwt({ token, user, account, profile, isNewUser}){
+        return token;
     },
   },
    pages:{
-    // newUser:"/auth/register"
-    //  signIn:"/auth/login"
+      signIn:"/auth/login"
    },
 
 })
