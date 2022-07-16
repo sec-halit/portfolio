@@ -29,7 +29,7 @@ const Header: FC<IHeaderProps> = ({ }) => {
     const router = useRouter();
     const { data: session, status } = useSession();
     const { image } = session && session.user || {}
-    const onSignOut=async (e) => {
+    const onSignOut=async (e:any) => {
         e.preventDefault();
         await signOut();
     }
