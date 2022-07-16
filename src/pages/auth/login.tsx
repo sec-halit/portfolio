@@ -3,9 +3,9 @@ import { FC, ReactElement } from 'react'
 import SignInEmail from '@/page-components/auth/signInEmail'
 import { ClientSafeProvider, getCsrfToken, getProviders, getSession, LiteralUnion } from 'next-auth/react';
 import type { BuiltInProviderType } from 'next-auth/providers';
-import { CtxOrReq } from 'next-auth/react/index';
 
 import SignInWithProvider from '@/page-components/auth/signInWithProvider';
+import { CtxOrReq } from 'next-auth/client/_utils';
 type Props = {
   csrfToken?: string,
   providers?: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null,
