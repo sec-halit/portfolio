@@ -27,7 +27,7 @@ const SignInWithProvider: FC<Props> = ({
 }): ReactElement => {
     const lazyRoot = React.useRef(null)
     const { signinUrl, name, type,callbackUrl } = provider || {}
-    const onSubmit = async (e)=>{
+    const onSubmit = async (e:EventTarget)=>{
         e.preventDefault();
         await signIn(provider?.id,{
                signinUrl:"/auth/login/"+(provider?.id || ""),
