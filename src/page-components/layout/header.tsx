@@ -3,12 +3,11 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React, { FC, Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, UserCircleIcon, XIcon } from '@heroicons/react/outline'
+import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/react'
 import Logo from '@/page-components/layout/logo';
 import { Session } from 'next-auth/core/types'
-import Link from 'next/link'
 import Head from 'next/head'
 const navigation = [
     { name: 'Dashboard', href: '/' },
@@ -29,7 +28,11 @@ interface IHeaderProps {
 const Header: FC<IHeaderProps> = ({ }) => {
     const router = useRouter();
     const { data: session, status } = useSession();
-    const { image, name, email } = session && session.user || {}
+    const { image } = session && session.user || {}
+    const onSignOut=async (e) => {
+        e.preventDefault();
+        await signOut();
+    }
     return (
         <>
             <Head>
@@ -138,10 +141,7 @@ const Header: FC<IHeaderProps> = ({ }) => {
                                                                 <a
                                                                     href="#"
                                                                     className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                                    onClick={e => {
-                                                                        e.preventDefault();
-                                                                        signOut();
-                                                                    }}
+                                                                    onClick={onSignOut}
                                                                 >
                                                                     Sign out
                                                                 </a>
@@ -155,10 +155,20 @@ const Header: FC<IHeaderProps> = ({ }) => {
                                                         <Menu.Item>
                                                             {({ active }) => (
                                                                 <a
-                                                                    href="/api/auth/signin"
+                                                                    href="/auth/login/google"
                                                                     className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm font-medium')}
                                                                 >
-                                                                    Sign in by Other
+                                                                    Sign in by Google
+                                                                </a>
+                                                            )}
+                                                        </Menu.Item>
+                                                        <Menu.Item>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href="/auth/login/email"
+                                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm font-medium')}
+                                                                >
+                                                                    Sign in by Link
                                                                 </a>
                                                             )}
                                                         </Menu.Item>

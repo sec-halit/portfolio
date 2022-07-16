@@ -7,6 +7,10 @@ const nextConfig = {
       {
         source: '/about/:lang*',
         destination: '/shared/about',
+      },
+      {
+        source: '/auth/login/:loginType',
+        destination: '/auth/login',
       }
     ]
   },

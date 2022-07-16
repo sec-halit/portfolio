@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Ssr Debug",
+      "cwd": "${workspaceFolder}",
+      "windows": {
+        "runtimeExecutable": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+      },
+      "runtimeArgs": ["--remote-debugging-port=9229"]
+    }
+  ]
+}

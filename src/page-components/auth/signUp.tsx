@@ -26,7 +26,7 @@ const SignUp: FC<Props> = ({
                 src={Logo}
                 alt="Workflow"
               />
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign Up to your account</h2>
             </div>
             <form className="mt-8 space-y-6" action={"/api/auth/signup"} method={"post"}>
               <input type="hidden" name="remember" defaultValue="true" />
