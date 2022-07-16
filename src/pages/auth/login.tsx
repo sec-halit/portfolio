@@ -5,7 +5,7 @@ import { ClientSafeProvider, getCsrfToken, getProviders, getSession, LiteralUnio
 import type { BuiltInProviderType } from 'next-auth/providers';
 
 import SignInWithProvider from '@/page-components/auth/signInWithProvider';
-import { CtxOrReq } from 'next-auth/client/_utils';
+import { GetServerSideProps } from 'next/types';
 type Props = {
   csrfToken?: string,
   providers?: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null,
@@ -29,7 +29,7 @@ const Login: FC<Props> = ({
     )
 }
 export default Login
-export async function getServerSideProps(context: CtxOrReq) {
+export async function getServerSideProps (context:GetServerSideProps) {
   const { loginType=null } = context?.query
   const csrfToken = await getCsrfToken(context);
   const providers = await getProviders();
