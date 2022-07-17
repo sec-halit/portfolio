@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { IWorkItem } from '../redux/actions/workAction';
+import { IWorkItem } from '@/actions/workAction';
 type Props ={
     Item:IWorkItem
 }
