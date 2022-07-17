@@ -1,0 +1,112 @@
+.section-title{
+    padding-bottom: 30px;
+    display: block;
+    p{
+        margin-bottom: 0;
+    }
+    h2{
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        position: relative;
+        color: #173b6c;
+        &::after {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 50px;
+                height: 3px;
+                background: #149ddd;
+                bottom: 0;
+                left: 0;
+        }
+    }
+}
+.section-title-comment{
+    font-weight: 600;
+}
+.resume-header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: -1.75rem;
+    h3{
+        margin-left: 1rem;
+        font-size: 26px;
+        font-weight: 700;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #050d18;
+    }
+}
+.detail-title{
+    margin-left: 1rem;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    &::before{
+        content: "“";
+        font-size: 2rem;
+        margin-top: -1rem;
+    }
+    &::after{
+        font-size: 2rem;
+        content: "“";
+        padding-bottom: 0rem;
+        margin-bottom: -5rem;
+        margin-top: 0.5rem;
+    }
+}
+.resume-title{
+    h3{
+        margin-left: 1rem;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #050d18;
+    }
+}
+.resume-item{
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #1f5297;
+    position: relative;
+    padding-bottom: 0;
+    &::before{
+        content: "";
+        box-sizing: content-box;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50px;
+        left: -11px;
+        top: 0;
+        background: #fff;
+        border: 2px solid #1f5297;
+    }
+    h4{
+        line-height: 18px;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: "Poppins", sans-serif;
+        color: #050d18;
+        margin-bottom: 10px;
+        margin-top: 2px;
+    }
+    h5.date-range{
+        font-family: "Raleway", sans-serif;
+        font-size: 16px;
+        background: #25d3ef47;
+        padding: 5px 15px;
+        display: inline-block;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+}

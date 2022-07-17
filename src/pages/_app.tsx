@@ -3,10 +3,14 @@ import type { AppProps } from 'next/app'
 
 import { SessionProvider } from "next-auth/react"
 import { FC } from 'react';
+import { QueryClient,QueryClientProvider } from 'react-query';
+const queryClient = new QueryClient();
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <SessionProvider session={pageProps.session} refetchInterval={0}>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </SessionProvider>
   )
 }

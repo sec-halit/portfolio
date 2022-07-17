@@ -11,8 +11,13 @@ export default async function handler(
 ) {
   const session = await unstable_getServerSession(req, res, authOptions)
   if (session) {
-    const { id } = req.query;
-    if (id) {
+    let { id,lang } = req.query;
+    if (lang) {
+      if(lang==="en"){
+        id="62d43e4a60d8990a3ff09813"
+      }else{
+        id="62d43f6c60d8990a3ff09815"
+      }
       try {
         const result = await cvModels.findById(id);
         return res.status(200).json({

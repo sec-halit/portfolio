@@ -16,10 +16,9 @@
 */
 import { LockClosedIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
-import Logo from '@images/workflow-mark-indigo-600.svg';
+import Logo from '@/images/workflow-mark-indigo-600.svg';
 import React, { FC, ReactElement } from 'react';
-import { ClientSafeProvider, getCsrfToken, getProviders, LiteralUnion, signIn, useSession } from 'next-auth/react'
-import { useRouter } from 'next/router';
+import { ClientSafeProvider,signIn } from 'next-auth/react'
 type Props = {
   csrfToken?: string | undefined
   provider?: ClientSafeProvider | undefined,
@@ -48,7 +47,7 @@ const SignInEmail: FC<Props> = ({
               lazyRoot={lazyRoot}
               layout={"responsive"}
               src={Logo}
-              alt="Workflow"
+              alt=""
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
           </div>
