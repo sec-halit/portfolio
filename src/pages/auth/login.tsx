@@ -3,9 +3,9 @@ import { FC, ReactElement } from 'react'
 import SignInEmail from '@/page-components/auth/signInEmail'
 import { ClientSafeProvider, getCsrfToken, getProviders, getSession, LiteralUnion } from 'next-auth/react';
 import type { BuiltInProviderType } from 'next-auth/providers';
-import { CtxOrReq } from 'next-auth/react/index';
 
 import SignInWithProvider from '@/page-components/auth/signInWithProvider';
+import { GetServerSideProps } from 'next/types';
 type Props = {
   csrfToken?: string,
   providers?: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null,
@@ -29,7 +29,7 @@ const Login: FC<Props> = ({
     )
 }
 export default Login
-export async function getServerSideProps(context: CtxOrReq) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { loginType=null } = context?.query
   const csrfToken = await getCsrfToken(context);
   const providers = await getProviders();

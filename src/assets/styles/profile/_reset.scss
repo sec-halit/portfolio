@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: "Open Sans", sans-serif;
+    color: #272829;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}

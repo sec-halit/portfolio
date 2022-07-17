@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 
 
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -15,7 +15,7 @@ import  { SignInUser } from '@/lib/services/index'
 
 
 (async ()=>await connectDB())()
-export default NextAuth({
+export const authOptions:NextAuthOptions={
   // https://next-auth.js.org/configuration/providers/oauth
   adapter: MongoDBAdapter(clientPromise),
   providers: [
@@ -90,5 +90,6 @@ export default NextAuth({
       signIn:"/auth/login"
    },
 
-})
+}
+export default NextAuth(authOptions)
 

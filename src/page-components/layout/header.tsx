@@ -9,11 +9,11 @@ import { signOut, useSession } from 'next-auth/react'
 import Logo from '@/page-components/layout/logo';
 import { Session } from 'next-auth/core/types'
 import Head from 'next/head'
+import NavLogo from '@/images/workflow-mark-indigo-500.svg'
 const navigation = [
     { name: 'Dashboard', href: '/' },
-    { name: 'Team', href: '/auth/login' },
-    { name: 'Projects', href: '#' },
-    { name: 'About', href: '/about' },
+    { name: 'Profile-TR', href: '/profile/tr' },
+    { name: 'Profile-EN', href: '/profile/en' },
 ]
 
 function classNames(...classes: string[]) {
@@ -29,7 +29,7 @@ const Header: FC<IHeaderProps> = ({ }) => {
     const router = useRouter();
     const { data: session, status } = useSession();
     const { image } = session && session.user || {}
-    const onSignOut=async (e) => {
+    const onSignOut=async (e:any) => {
         e.preventDefault();
         await signOut();
     }
@@ -59,13 +59,13 @@ const Header: FC<IHeaderProps> = ({ }) => {
                                     <div className="flex-shrink-0 flex items-center">
                                         <img
                                             className="block lg:hidden h-8 w-auto"
-                                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                                            src={NavLogo.src}
                                             alt=""
                                         />
                                         <img
                                             className="hidden lg:block h-8 w-auto"
-                                            src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                                            alt="Workflow"
+                                            src={NavLogo.src}
+                                            alt=""
                                         />
                                     </div>
                                     <div className="hidden sm:block sm:ml-6">
@@ -211,7 +211,7 @@ const Header: FC<IHeaderProps> = ({ }) => {
                     </>
                 )}
             </Disclosure>
-            <h1 className="text-green-500 text-2xl md:text-3xl lg:text-4xl font-bold p-4"> {status.toUpperCase() || ""}</h1>
+            {/* <h1 className="text-green-500 text-2xl md:text-3xl lg:text-4xl font-bold p-4"> {status.toUpperCase() || ""}</h1> */}
         </>
     )
 }

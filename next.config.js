@@ -1,4 +1,8 @@
-/** @type {import('next').NextConfig} */
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ **/
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
@@ -9,11 +13,20 @@ const nextConfig = {
         destination: '/shared/about',
       },
       {
+        source: '/profile/:lang*',
+        destination: '/shared/profile',
+      },
+      {
         source: '/auth/login/:loginType',
         destination: '/auth/login',
+      },
+      {
+        source: '/api/cvs/getProfile/:lang',
+        destination: '/api/cvs/getProfile',
       }
     ]
   },
+  // experimental: { images: { allowFutureImage: true } }
 }
 
 module.exports = nextConfig

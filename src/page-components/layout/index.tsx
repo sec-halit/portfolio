@@ -1,6 +1,5 @@
 import Header from "./header"
 import { FC } from "react";
-import { useSession } from "next-auth/react";
 
 interface Props {
   children: React.ReactNode
