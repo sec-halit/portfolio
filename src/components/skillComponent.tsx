@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { FC } from 'react'
 import { ISkillItem, SkillColumn } from '@/actions/skillAction';
 // import {  useAppSelector } from '@/store/hooks';

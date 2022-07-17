@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { FC } from 'react'
 import ImgLocation from '@/icons/location.png';
 import ImgPhone from '@/icons/phone.png';

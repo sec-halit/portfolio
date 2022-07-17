@@ -1,7 +1,6 @@
 import { Language } from '@/lib/helper/types'
 import React, { FC } from 'react'
-import { IWorkItem } from '../redux/actions/workAction'
-import { useAppSelector } from '../redux/store/hooks'
+import { IWorkItem } from '@/actions/workAction'
 import ResumeHeaderComponent from './resumeHeaderComponent'
 import WorkItemComponent from './workItemComponent'
 type Props={
@@ -9,7 +8,6 @@ type Props={
     lang:Language
 }
 const WorkComponent:FC<Props> = ({works,lang}) => {
-    // const Items = useAppSelector((state) => state.works.items)
     return (
         <>
             <div className="col-12">

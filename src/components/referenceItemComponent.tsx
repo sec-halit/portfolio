@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, {  FC } from 'react'
 import { IReferenceItem } from '@/actions/referenceAction';
 import ImageRadio from '@/icons/radio.png';

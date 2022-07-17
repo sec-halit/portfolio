@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { Component } from 'react'
 import ImageRadio from '@/icons/radio.png';
 type Props = {

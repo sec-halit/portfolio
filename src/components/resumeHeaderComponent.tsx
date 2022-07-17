@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // import dynamic from 'next/dynamic'
 import React, {  FC } from 'react'
 import  { StaticImageData } from 'next/image'
