@@ -4,7 +4,7 @@ import { ISkillItem } from './skillAction';
 export interface IProjectState {
     title?:string,
     icon?:string,
-    items:ProjectItem[],
+    items:IProjectItem[],
 }
 export enum SkillColumn{
     COLOUMN_1,
