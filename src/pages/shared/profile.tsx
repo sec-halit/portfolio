@@ -104,11 +104,11 @@ export const getServerSideProps: GetServerSideProps = async (context)=> {
         method: 'GET',
         headers: headers
     })
-    if (res?.redirected) {
+    if (res?.status===401) {
         return {
             redirect: {
                 permanent: false,
-                destination: host+"/auth/login"
+                destination: "/auth/login"
             }
         }
     }
