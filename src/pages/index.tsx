@@ -7,7 +7,7 @@ type Props = {  };
 const Home: FC<Props>=():ReactElement => {
   return (<Layout>
     <div className="container mx-auto p-2">
-      <img src={CommingSon.src} width="100%" height="100%" alt="" />
+      <img src={CommingSon.src} width="100%" height="100%" alt="" className="layout-image"/>
     </div>
   </Layout>
   )
