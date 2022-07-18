@@ -108,7 +108,7 @@ export const getServerSideProps: GetServerSideProps = async (context)=> {
         return {
             redirect: {
                 permanent: false,
-                destination: res.url
+                destination: host+"/auth/login"
             }
         }
     }
@@ -119,7 +119,7 @@ export const getServerSideProps: GetServerSideProps = async (context)=> {
         return {
             redirect: {
                 permanent: false,
-                destination: res.url
+                destination: "/"
             }
         }
     }
