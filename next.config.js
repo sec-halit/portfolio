@@ -3,6 +3,7 @@
 /**
  * @type {import('next').NextConfig}
  **/
+const path = require('path')
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
@@ -25,6 +26,9 @@ const nextConfig = {
         destination: '/api/cvs/getProfile',
       }
     ]
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname,'src','assets','styles')],
   },
   // experimental: { images: { allowFutureImage: true } }
 }
