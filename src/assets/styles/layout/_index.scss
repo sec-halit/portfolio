@@ -1,5 +1,40 @@
 .container {
-    .layout-image{
+    div.layout-image{
+      background-position: bottom center;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      background-size: contain;
+    //   background-blend-mode:screen;
+    // background-blend-mode: multiply;
+      background-color: rgba($color: #870fffac, $alpha: 0.25);
+      animation-name: blendAnimate;
+      animation-duration: 10s;
+      animation-delay: 5s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+      animation-timing-function:ease;
+    }
+    @keyframes blendAnimate {
+        20%   {
+            background-color:  rgba($color: #f1a26db9, $alpha: 0.25);
+            background-blend-mode: screen;
+            
+        }
+        45%  {background-color:  rgba($color: #f1a26db9, $alpha: .25);  }
+        75% {background-color: rgba($color: #870fffac, $alpha: 0.50);background-blend-mode: multiply; }
+        90%  {background-color:  rgba($color: #6d74f1b9, $alpha: .50);}
+        100%   {
+            background-color:  rgba($color: #f1a26db9, $alpha: 0.25);
+            
+            
+        }
+      }
+    img.layout-image{
         position: fixed;
         left: 0;
         top: 0;
