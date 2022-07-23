@@ -1,6 +1,6 @@
 .container {
     div.layout-image{
-      background-position: bottom center;
+      background-position: center top;
       display: flex;
       width: 100vw;
       height: 100vh;
@@ -8,7 +8,7 @@
       z-index: -1;
       left: 0;
       top: 0;
-      background-size: contain;
+      background-size: cover;
     //   background-blend-mode:screen;
     // background-blend-mode: multiply;
       background-color: rgba($color: #870fffac, $alpha: 0.25);
@@ -18,6 +18,7 @@
       animation-iteration-count: infinite;
       animation-fill-mode: forwards;
       animation-timing-function:ease;
+      background-repeat: no-repeat;
     }
     @keyframes blendAnimate {
         20%   {
