@@ -18,7 +18,10 @@
     typing 3.5s steps(40, end) infinite,
     blink-caret .35s step-end infinite;
 }
-
+.custom-shadow{
+  color: #FFFFFF;
+  text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+}
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
