@@ -1,5 +1,5 @@
 .container {
-    div.layout-content.image{
+    div.layout-image-content{
       background-color: rgb(29, 27, 61);
     }
     div.layout-image{
@@ -12,8 +12,6 @@
       left: 0;
       top: 0;
       background-size: cover;
-    //   background-blend-mode:screen;
-    // background-blend-mode: multiply;
       background-color: rgba($color: #870fffac, $alpha: 0.25);
       animation-name: blendAnimate;
       animation-duration: 10s;
@@ -22,6 +20,9 @@
       animation-fill-mode: forwards;
       animation-timing-function:ease;
       background-repeat: no-repeat;
+      @media (min-width:1920px) {
+        width: 100%;
+      }
     }
     @keyframes blendAnimate {
         20%   {
