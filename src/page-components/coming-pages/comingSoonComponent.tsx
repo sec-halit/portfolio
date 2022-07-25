@@ -2,7 +2,7 @@ import React,{FC} from 'react';
 interface IComingSoonProps {
 }
 
-const ComingSoon: FC<IComingSoonProps> = () => {
+const ComingSoonComponent: FC<IComingSoonProps> = () => {
   return <>
     <div className="layout-image-content">
       
@@ -15,4 +15,4 @@ const ComingSoon: FC<IComingSoonProps> = () => {
   </>;
 };
 
-export default ComingSoon;
+export default ComingSoonComponent;
