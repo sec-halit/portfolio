@@ -12,37 +12,63 @@
       left: 0;
       top: 0;
       background-size: cover;
-      background-color: rgba($color: #870fffac, $alpha: 0.25);
+      // background-color: rgba($color: #870fffac, $alpha: 0.25);
       animation-name: blendAnimate;
       animation-duration: 10s;
       animation-delay: 5s;
       animation-iteration-count: infinite;
-      animation-fill-mode: forwards;
+      animation-fill-mode: backwards;
       animation-timing-function:ease;
       background-repeat: no-repeat;
       @media (min-width:1920px) {
         width: 100%;
+        background-position: center center;
       }
     }
     @keyframes blendAnimate {
-        20%   {
-            background-color:  rgba($color: #f1a26db9, $alpha: 0.25);
-            background-blend-mode: screen;
-            
+        0%{
+          background-blend-mode: multiply;
+          background-color:  rgba($color: #7980ffea, $alpha: .50);
+        
         }
-        45%  {background-color:  rgba($color: #f1a26db9, $alpha: .25);  }
-        75% {background-color: rgba($color: #870fffac, $alpha: 0.50);background-blend-mode: multiply; }
-        90%  {background-color:  rgba($color: #6d74f1b9, $alpha: .50);}
-        100%   {
-            background-color:  rgba($color: #f1a26db9, $alpha: 0.25);
-            
-            
+        30%   {
+          background-blend-mode: screen;
+          background-color:  rgba($color: #f1a26db9, $alpha: 0.45);
         }
+        60%  {
+          background-color:  rgba($color: #f25e47de, $alpha: .45); 
+         
+        }
+        85% {
+        
+       
+          background-color:  rgba($color: #6d74f195, $alpha: .45); 
+          
+        }
+        100%  {
+          background-blend-mode: multiply;
+          background-color: rgba($color: #7980ffea, $alpha: 0.45);
+        }
+        // 100%   {
+        //     background-color:  rgba($color: #f1a26db9, $alpha: 0.25);
+        // }
       }
     img.layout-image{
         position: fixed;
         left: 0;
         top: 0;
         z-index: -1;
+    }
+    footer{
+      &.custom-footer-content{
+        ul{
+          li{
+            img{
+              height: 1.5rem;
+              max-height: 1.5rem;
+            }
+          }
+        }
+      }
     }
 }

@@ -1,11 +1,11 @@
-import React, { FC,ReactElement  } from 'react'
+import React, { FC, ReactElement } from 'react'
 import Layout from '@/page-components/layout/index'
-import Cvs  from '@/lib/models/cvModels'
-import connectDB from '@/lib/index';
-type Props = {  };
-const About: FC<Props>=({}):ReactElement => {
+interface IAboutProps {
+
+};
+
+const About: FC<IAboutProps> = ({ }): ReactElement => {
   return (<Layout>
-   
   </Layout>
   )
 }
@@ -13,10 +13,10 @@ const About: FC<Props>=({}):ReactElement => {
 
 export default About
 
-export const getServerSideProps = async ()=>{
+export const getServerSideProps = async () => {
   return {
-    props:{
-      
+    props: {
+
     }
   }
 }
