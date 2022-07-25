@@ -3,7 +3,7 @@
 import React, { FC,ReactElement  } from 'react'
 
 import Layout from '@/page-components/layout/index'
-import CommingSonComponent from '@/page-components/comming/CommingSonComponent';
+import CommingSonComponent from '@/page-components/coming-pages/comingSoonComponent';
 type Props = {  };
 const Home: FC<Props>=():ReactElement => {
   return (<Layout>
