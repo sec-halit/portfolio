@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import {  UserCircleIcon} from '@heroicons/react/outline'
+import { UserCircleIcon } from '@heroicons/react/outline'
 type LogoType = { src?: string | null }
 const Logo: FC<LogoType> = ({ src }) => {
     return src ? (

@@ -6,5 +6,5 @@ export const referenceReducer = createSlice({
     initialState,
     reducers: referenceAction
 })
-export const { setItems,addItem } = referenceReducer.actions
+export const { setItems, addItem } = referenceReducer.actions
 export default referenceReducer.reducer

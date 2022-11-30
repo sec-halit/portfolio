@@ -6,5 +6,5 @@ export const projectReducer = createSlice({
     initialState,
     reducers: projectAction
 })
-export const { setItems,addItem } = projectReducer.actions
+export const { setItems, addItem } = projectReducer.actions
 export default projectReducer.reducer

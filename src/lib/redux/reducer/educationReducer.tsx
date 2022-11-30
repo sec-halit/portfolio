@@ -6,5 +6,5 @@ export const educationReducer = createSlice({
     initialState,
     reducers: educationAction
 })
-export const { setItems,addItem } = educationReducer.actions
+export const { setItems, addItem } = educationReducer.actions
 export default educationReducer.reducer

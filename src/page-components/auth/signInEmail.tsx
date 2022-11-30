@@ -18,7 +18,7 @@ import { LockClosedIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 import Logo from '@/images/workflow-mark-indigo-600.svg';
 import React, { FC, ReactElement } from 'react';
-import { ClientSafeProvider,signIn } from 'next-auth/react'
+import { ClientSafeProvider, signIn } from 'next-auth/react'
 type Props = {
   csrfToken?: string | undefined
   provider?: ClientSafeProvider | undefined,
@@ -32,8 +32,8 @@ const SignInEmail: FC<Props> = ({
     e.preventDefault();
     await signIn(provider?.id, {
       redirect: true,
-      email:e.target.email.value,
-      password:e.target.password.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
     })
   }
   return (

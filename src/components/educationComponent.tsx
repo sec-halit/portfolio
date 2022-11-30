@@ -4,21 +4,18 @@ import { IEducationItem } from '@/actions/educationAction';
 import ResumeHeaderComponent from '@/components/resumeHeaderComponent'
 import WorkItemComponent from '@/components/workItemComponent';
 import { Language } from '@/lib/helper/types';
-type Props={
-    educations:IEducationItem[],
-    lang:Language
+type Props = {
+    educations: IEducationItem[],
+    lang: Language
 }
-const EducationComponent:FC<Props> = ({educations,lang}) => {
-    // const Items = useAppSelector((state) => state.educations.items)
-    return (
-        <>
-            <div className="col-12">
-                 <ResumeHeaderComponent title={lang==="tr"?"Eğitim":"Education"} icon="education" />
-                {educations && educations.map((education: IEducationItem, index: number) => {
-                    return <WorkItemComponent Item={education} key={(index + 20)} />
-                })}
-            </div>
-        </>
-    )
-}
+const EducationComponent: FC<Props> = ({ educations, lang }) => (
+    <>
+        <div className="col-12">
+            <ResumeHeaderComponent title={lang === "tr" ? "Eğitim" : "Education"} icon="education" />
+            {educations?.map((education: IEducationItem, index: number) => {
+                return <WorkItemComponent Item={education} key={(index + 20)} />
+            })}
+        </div>
+    </>
+)
 export default EducationComponent

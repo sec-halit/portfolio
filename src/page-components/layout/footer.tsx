@@ -5,15 +5,15 @@ interface IFooterProps {
 }
 
 const Footer: React.FunctionComponent<IFooterProps> = (props) => {
-    const reactjs = new URL("@/icons/code/reactjs.svg",import.meta.url).pathname;
-    const nextjs = new URL("@/icons/code/nextjs.svg",import.meta.url).pathname;
-    const reduxjs = new URL("@/icons/code/redux.svg",import.meta.url).pathname;
-    const typescriptJs = new URL("@/icons/code/ts-node.svg",import.meta.url).pathname;
-    const vercelLogo = new URL("@/icons/code/vercel-logotype-light.svg",import.meta.url).pathname;
-    const githubLogo = new URL("@/icons/code/GitHub_Logo_White.png",import.meta.url).pathname;
-    const mongoLogo = new URL("@/icons/code/mongodb-ar21.svg",import.meta.url).pathname;
-    const sassLogo = new URL("@/icons/code/Sass_Logo_Color.svg",import.meta.url).pathname;
-    return (<footer className="container mx-auto p-2 rounded-lg shadow md:px-2 md:py-4 custom-footer-content" style={{position:"fixed",bottom:0}}>
+    const reactjs = new URL("@/icons/code/reactjs.svg", import.meta.url).pathname;
+    const nextjs = new URL("@/icons/code/nextjs.svg", import.meta.url).pathname;
+    const reduxjs = new URL("@/icons/code/redux.svg", import.meta.url).pathname;
+    const typescriptJs = new URL("@/icons/code/ts-node.svg", import.meta.url).pathname;
+    const vercelLogo = new URL("@/icons/code/vercel-logotype-light.svg", import.meta.url).pathname;
+    const githubLogo = new URL("@/icons/code/GitHub_Logo_White.png", import.meta.url).pathname;
+    const mongoLogo = new URL("@/icons/code/mongodb-ar21.svg", import.meta.url).pathname;
+    const sassLogo = new URL("@/icons/code/Sass_Logo_Color.svg", import.meta.url).pathname;
+    return (<footer className="container mx-auto p-2 rounded-lg shadow md:px-2 md:py-4 custom-footer-content" style={{ position: "fixed", bottom: 0 }}>
         <div className="sm:flex sm:items-center sm:justify-between">
             {/* <a href="" className="flex items-center mb-4 sm:mb-0">
                 <img src={reactjs} className="mr-3 h-8" alt="React JS" />

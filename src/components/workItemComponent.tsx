@@ -1,24 +1,20 @@
-import React, { Component } from 'react'
+import React, { FC, Component } from 'react'
 import { IWorkItem } from '@/actions/workAction';
-type Props ={
-    Item:IWorkItem
+type Props = {
+    Item: IWorkItem
 }
 
-export default class WorkItemComponent extends Component<Props> {
-    render() {
-        let { title, dateTitle, detail } = this.props.Item;
-        return (
-            <div className="resume-item">
-                <h4>{title}</h4>
-                <h5 className="date-range">
-                    {dateTitle}
-                </h5>
-                <p>
-                    <em>
-                        {detail}
-                    </em>
-                </p>
-            </div>
-        )
-    }
-}
+const WorkItemComponent: FC<Props> = ({ Item: { title, dateTitle, detail } }) => (
+    <div className="resume-item">
+        <h4>{title}</h4>
+        <h5 className="date-range">
+            {dateTitle}
+        </h5>
+        <p>
+            <em>
+                {detail}
+            </em>
+        </p>
+    </div>
+)
+export default WorkItemComponent

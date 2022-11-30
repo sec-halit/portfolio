@@ -26,15 +26,15 @@ const SignInWithProvider: FC<Props> = ({
     provider
 }): ReactElement => {
     const lazyRoot = React.useRef(null)
-    const { signinUrl, name, type,callbackUrl } = provider || {}
-    const onSubmit = async (e:any)=>{
+    const { signinUrl, name, type, callbackUrl } = provider || {}
+    const onSubmit = async (e: any) => {
         e.preventDefault();
-        await signIn(provider?.id,{
-               signinUrl:"/auth/login/"+(provider?.id || ""),
-               callbackUrl:"/",
-               redirect:true
+        await signIn(provider?.id, {
+            signinUrl: "/auth/login/" + (provider?.id || ""),
+            callbackUrl: "/",
+            redirect: true
         })
-   }
+    }
     return (
         <>
             <div className="min-h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
@@ -80,7 +80,7 @@ const SignInWithProvider: FC<Props> = ({
                             <div className="mt-8 space-y-6">
                                 <div>
                                     <button
-                                       onClick={onSubmit}
+                                        onClick={onSubmit}
                                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     >
                                         <span className="absolute left-0 inset-y-0 flex items-center pl-3">

@@ -2,23 +2,23 @@ import { PayloadAction, SliceCaseReducers, ValidateSliceCaseReducers } from '@re
 import { IWorkItem } from './workAction';
 
 export interface IReferenceState {
-    title?:string,
-    icon?:string,
-    items:IReferenceItem[],
+    title?: string,
+    icon?: string,
+    items: IReferenceItem[],
 }
 export interface IReferenceItem extends IWorkItem {
-    phone?:string
+    phone?: string
 }
-export const initialState: IReferenceState= {
-    title:"",
-    icon:"",
-    items:[]
+export const initialState: IReferenceState = {
+    title: "",
+    icon: "",
+    items: []
 }
-const Actions:ValidateSliceCaseReducers<IReferenceState, SliceCaseReducers<IReferenceState>> ={
-    setItems: (state:IReferenceState,action: PayloadAction<IReferenceItem[]>) => {
-        state.items=action.payload.slice(0);
+const Actions: ValidateSliceCaseReducers<IReferenceState, SliceCaseReducers<IReferenceState>> = {
+    setItems: (state: IReferenceState, action: PayloadAction<IReferenceItem[]>) => {
+        state.items = action.payload.slice(0);
     },
-    addItem: (state:IReferenceState,action: PayloadAction<IReferenceItem>) => {
+    addItem: (state: IReferenceState, action: PayloadAction<IReferenceItem>) => {
         state.items.push(action.payload);
     }
 }

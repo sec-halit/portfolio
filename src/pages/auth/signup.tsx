@@ -14,27 +14,27 @@ const Register: FC<Props> = ({
   csrfToken,
   providers
 }): ReactElement => {
-    return(
-      <>
-        <Layout>
-           <SignUp csrfToken={csrfToken} provider={providers?.credentials} />
-        </Layout>
-      </>
-    )
+  return (
+    <>
+      <Layout>
+        <SignUp csrfToken={csrfToken} provider={providers?.credentials} />
+      </Layout>
+    </>
+  )
 }
 export default Register
 
 export async function getServerSideProps(context: CtxOrReq) {
   const csrfToken = await getCsrfToken(context);
   const providers = await getProviders();
-  const session = await getSession({ req: context.req});
-  if(session){
+  const session = await getSession({ req: context.req });
+  if (session) {
     return {
       redirect: {
         permanent: false,
         destination: "/",
       },
-      props:{},
+      props: {},
     }
   }
   return {

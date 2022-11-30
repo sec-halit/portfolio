@@ -87,7 +87,7 @@ const ProfileComponent: FC<ProfileProps> = ({ data: { info, projects, skills, wo
     )
 }
 export default ProfileComponent;
-export const getServerSideProps: GetServerSideProps = async (context)=> {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     const { req, query } = context;
     let host = ""
     if (env === 'development') {
@@ -104,7 +104,7 @@ export const getServerSideProps: GetServerSideProps = async (context)=> {
         method: 'GET',
         headers: headers
     })
-    if (res?.status===401) {
+    if (res?.status === 401) {
         return {
             redirect: {
                 permanent: false,

@@ -6,8 +6,8 @@ interface Props {
   children: React.ReactNode
 }
 
-const Layout:FC<Props> = ({ children})=> {
- 
+const Layout: FC<Props> = ({ children }) => {
+
   return (
     <>
       <div className="container mx-auto">

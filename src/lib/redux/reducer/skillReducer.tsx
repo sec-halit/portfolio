@@ -6,5 +6,5 @@ export const skillReducer = createSlice({
     initialState,
     reducers: skillAction
 })
-export const { setItems,addItem } = skillReducer.actions
+export const { setItems, addItem } = skillReducer.actions
 export default skillReducer.reducer

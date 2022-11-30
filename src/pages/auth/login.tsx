@@ -9,43 +9,43 @@ import { GetServerSideProps } from 'next/types';
 type Props = {
   csrfToken?: string,
   providers?: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null,
-  loginType?:BuiltInProviderType
+  loginType?: BuiltInProviderType
 };
 const Login: FC<Props> = ({
   csrfToken,
   providers,
   loginType
 }): ReactElement => {
-    return(
-      <>
-        <Layout>
-          {providers && Object.values(providers).sort((a,b)=>a.name>b.name?0:-1).map((provider,key) =>(
-            (provider?.id==="credentials" && ( loginType===null || loginType==="credentials")) && (<SignInEmail csrfToken={csrfToken} provider={provider} key={key} />) || (
-              (provider?.id===loginType) && (<SignInWithProvider csrfToken={csrfToken} provider={provider} key={key}/>)
-            )))
-          }
-        </Layout>
-      </>
-    )
+  return (
+    <>
+      <Layout>
+        {providers && Object.values(providers).sort((a, b) => a.name > b.name ? 0 : -1).map((provider, key) => (
+          (provider?.id === "credentials" && (loginType === null || loginType === "credentials")) && (<SignInEmail csrfToken={csrfToken} provider={provider} key={key} />) || (
+            (provider?.id === loginType) && (<SignInWithProvider csrfToken={csrfToken} provider={provider} key={key} />)
+          )))
+        }
+      </Layout>
+    </>
+  )
 }
 export default Login
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { loginType=null } = context?.query
+  const { loginType = null } = context?.query
   const csrfToken = await getCsrfToken(context);
   const providers = await getProviders();
-  const session = await getSession({ req: context.req});
-  if(session){
+  const session = await getSession({ req: context.req });
+  if (session) {
     return {
       redirect: {
         permanent: false,
         destination: "/",
       },
-      props:{},
+      props: {},
     }
   }
   return {
     props: {
-      csrfToken, providers,loginType:loginType
+      csrfToken, providers, loginType: loginType
     }
   }
 }

@@ -6,5 +6,5 @@ export const infoReducer = createSlice({
     initialState,
     reducers: infoAction
 })
-export const { setItems,addItem } = infoReducer.actions
+export const { setItems, addItem } = infoReducer.actions
 export default infoReducer.reducer

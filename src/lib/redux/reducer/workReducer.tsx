@@ -6,5 +6,5 @@ export const workReducer = createSlice({
     initialState,
     reducers: workAction
 })
-export const { setItems,addItem } = workReducer.actions
+export const { setItems, addItem } = workReducer.actions
 export default workReducer.reducer

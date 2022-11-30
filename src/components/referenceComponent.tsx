@@ -5,15 +5,14 @@ import ReferenceItemComponent from './referenceItemComponent';
 import { IReferenceItem } from '@/lib/redux/actions/referenceAction';
 import { Language } from '@/lib/helper/types';
 
-type Props ={
-  references:IReferenceItem[],
-  lang:Language
+type Props = {
+  references: IReferenceItem[],
+  lang: Language
 }
-const ReferenceComponent:FC<Props> = ({references,lang}) => {
-  return (
-    <>
-      <div className="col-12">
-      <ResumeHeaderComponent title={lang==="tr"?"Referans":"References"} icon="references" />
+const ReferenceComponent: FC<Props> = ({ references, lang }) => (
+  <>
+    <div className="col-12">
+      <ResumeHeaderComponent title={lang === "tr" ? "Referans" : "References"} icon="references" />
       <div className="col-12">
         {references.map((reference, index) => {
           return (
@@ -23,7 +22,6 @@ const ReferenceComponent:FC<Props> = ({references,lang}) => {
         }
       </div>
     </div>
-    </>
-  )
-}
+  </>
+)
 export default ReferenceComponent

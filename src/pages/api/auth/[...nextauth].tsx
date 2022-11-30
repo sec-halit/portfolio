@@ -11,11 +11,11 @@ import clientPromise from "@/lib/mondodb";
 import connectDB from '@/lib/index';
 import Users from '@/lib/models/userModels';
 
-import  { SignInUser } from '@/lib/services/index'
+import { SignInUser } from '@/lib/services/index'
 
 
-(async ()=>await connectDB())()
-export const authOptions:NextAuthOptions={
+(async () => await connectDB())()
+export const authOptions: NextAuthOptions = {
   // https://next-auth.js.org/configuration/providers/oauth
   adapter: MongoDBAdapter(clientPromise),
   providers: [
@@ -36,7 +36,7 @@ export const authOptions:NextAuthOptions={
       async authorize(credentials, req) {
         const email = credentials?.email || "";
         const password = credentials?.password || "";
-        const user = await Users.findOne({ email:email });
+        const user = await Users.findOne({ email: email });
         if (!user) {
           throw new Error("You haven't registered yet");
         }
@@ -45,7 +45,7 @@ export const authOptions:NextAuthOptions={
         }
         return SignInUser({ password, user })
       },
-      
+
     })
   ],
   theme: {
@@ -65,7 +65,7 @@ export const authOptions:NextAuthOptions={
         path: '/',
         secure: false
       },
-      
+
     }
   },
   secret: process.env.NEXTAUTH_SECRET,
@@ -82,13 +82,13 @@ export const authOptions:NextAuthOptions={
     async session({ session, user, token }) {
       return session;
     },
-    async jwt({ token, user, account, profile, isNewUser}){
-        return token;
+    async jwt({ token, user, account, profile, isNewUser }) {
+      return token;
     },
   },
-   pages:{
-      signIn:"/auth/login"
-   },
+  pages: {
+    signIn: "/auth/login"
+  },
 
 }
 export default NextAuth(authOptions)
